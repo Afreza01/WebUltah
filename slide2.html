@@ -21,31 +21,57 @@
     }
 
     .container {
-            position: relative;
-            text-align: center;
-            padding: 20px;
-            width: 100%;
-            max-width: 250px;
-            margin: 0 auto;
-        }
+      position: relative;
+      text-align: center;
+      padding: 20px;
+      width: 100%;
+      max-width: 250px;
+      margin: 0 auto;
+    }
 
 
     .person-img-top {
-      position: absolute;
-      width: 220px;
-      bottom: 100px;
-      left: -50px;
-      width: 200px;
-      
+      position: fixed;
+      top: 120px;
+      /* sesuaikan posisi vertikal */
+      left: 0;
+      max-width: 40vw;
+      /* gambar maksimal 40% viewport width */
+      height: auto;
+      z-index: 10;
+    }
+
+    .person-img-top1 {
+      position: fixed;
+      bottom: 120px;
+      /* sesuaikan posisi vertikal */
+      left: 0;
+      max-width: 40vw;
+      /* gambar maksimal 40% viewport width */
+      height: auto;
+      z-index: 10;
     }
 
     .person-img-bottom {
-      position: absolute;
-      top: 50px;
-      right: -50px;
-      width: 230px;
+      position: fixed;
+      top: 120px;
+      right: 0;
+      max-width: 40vw;
+      height: auto;
       transform: rotate(180deg);
+      z-index: 10;
     }
+
+    .person-img-bottom2 {
+      position: fixed;
+      bottom: 120px;
+      right: 0;
+      max-width: 40vw;
+      height: auto;
+      transform: rotate(180deg);
+      z-index: 10;
+    }
+
 
     .message-box {
       position: relative;
@@ -69,20 +95,25 @@
       text-decoration: none;
       color: black;
     }
+
     .button:hover {
-  background-color: #f8aeb4;
-}
+      background-color: #f8aeb4;
+    }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <img src="image/foto2.png" alt="Top Person" class="person-img-top" />
+    <img src="image/foto3.png" alt="Top Person" class="person-img-top" />
+    <img src="image/foto3.png" alt="Top Person" class="person-img-top1" />
+
     <div class="message-box">
       <h1>HAPPY BIRTHDAY</h1>
       <a href="index.html" class="button">Klik lagi dah</a>
     </div>
     <img src="image/foto3.png" alt="Bottom Person" class="person-img-bottom" />
+    <img src="image/foto3.png" alt="Bottom Person" class="person-img-bottom2" />
+
   </div>
 </body>
 
