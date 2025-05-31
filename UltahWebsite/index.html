@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Special for U</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('image/backg.jpeg');
+            /* Ganti dengan gambar background pita kamu */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            position: relative;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            max-width: 260px;
+            margin: 0 auto;
+        }
+
+        .person-img {
+            position: absolute;
+            top: -20em;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 250px;
+            z-index: -1;
+            /* pastikan ini di belakang message-box */
+            border-radius: 10px;
+        }
+
+        .message-box {
+            background-color: #fbd2d6;
+            padding: 20px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .message-box h2 {
+            margin: 0 0 10px;
+            font-size: 20px;
+            font-style: italic;
+        }
+
+        .message-box p {
+            margin: 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .click-text {
+            margin-top: 15px;
+            font-size: 14px;
+            font-style: italic;
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <img src="image/foto6.png" alt="Moza" class="person-img" />
+            <div class="message-box">
+                <h2><strong>Hi Mozajaaa!</strong></h2>
+                <p>THIS IS SPECIAL FOR U TODAY</p>
+            </div>
+            <a href="slide2.html" class="click-text">Klik Dahh</a>
+        </div>
+    </section>
+</body>
+
+</html>

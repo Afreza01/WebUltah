@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('image/backg.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+            position: relative;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            max-width: 260px;
+            margin: 0 auto;
+        }
+
+
+    .person-img-top {
+      position: absolute;
+      width: 220px;
+      bottom: 100px;
+      left: -50px;
+      width: 200px;
+      
+    }
+
+    .person-img-bottom {
+      position: absolute;
+      top: 50px;
+      right: -80px;
+      width: 230px;
+      transform: rotate(180deg);
+    }
+
+    .message-box {
+      position: relative;
+      top: 40%;
+      transform: translateY(-10%);
+      padding: 20px;
+    }
+
+    .message-box h1 {
+      font-size: 24px;
+      margin-bottom: 0px;
+      font-style: italic;
+    }
+
+    .button {
+      font-size: 16px;
+      font-style: italic;
+      bottom: -50%;
+      margin: 0;
+      text-decoration: none;
+      color: black;
+    }
+    .button:hover {
+  background-color: #f8aeb4;
+}
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <img src="image/foto2.png" alt="Top Person" class="person-img-top" />
+    <div class="message-box">
+      <h1>HAPPY BIRTHDAY</h1>
+      <a href="index.html" class="button">Klik lagi dah</a>
+
+    </div>
+    <img src="image/foto3.png" alt="Bottom Person" class="person-img-bottom" />
+  </div>
+</body>
+
+</html>
