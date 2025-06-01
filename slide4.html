@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interaktif Balikan</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffe4ec;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      background: white;
+      padding: 24px 20px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      width: 90%;
+      max-width: 420px;
+      position: relative;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 22px;
+      color: #d81b60;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      margin: 10px;
+      border: none;
+      background-color: #ff87ab;
+      color: white;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn:hover {
+      background-color: #ff6495;
+    }
+
+    #no2 {
+      position: absolute;
+      transition: transform 0.3s ease;
+      z-index: 999;
+    }
+
+    /* Modal Styles */
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      width: 90%;
+      max-width: 350px;
+      text-align: center;
+      animation: scaleIn 0.3s ease;
+    }
+
+    @keyframes scaleIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .modal img {
+      width: 100%;
+      max-height: 200px;
+      border-radius: 10px;
+      object-fit: cover;
+      margin-bottom: 16px;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .result-grid p {
+      margin: 0;
+      font-weight: bold;
+      color: #c2185b;
+      font-size: 15px;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 18px;
+      }
+
+      .btn {
+        font-size: 14px;
+        padding: 8px 14px;
+        margin: 6px;
+      }
+
+      .result-grid p {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="content">
+    <h2 id="question">Boleh aku nanya?</h2>
+    <button class="btn" id="yes1">Boleh</button>
+    <button class="btn" id="no1">gaaa</button>
+  </div>
+
+  <!-- Modal will be appended here -->
+  <script>
+    const content = document.getElementById('content');
+    const question = document.getElementById('question');
+    const yes1 = document.getElementById('yes1');
+    const no1 = document.getElementById('no1');
+
+    yes1.addEventListener('click', () => {
+      showSecondQuestion();
+    });
+
+    no1.addEventListener('click', () => {
+      question.innerText = "harus boleh laa";
+      setTimeout(showSecondQuestion, 2000);
+    });
+
+    function showSecondQuestion() {
+      content.innerHTML = `
+        <h2>Mao balikan gaaa?</h2>
+        <button class="btn" id="yes2">Mao</button>
+        <button class="btn" id="no2">Engga mao</button>
+        <div id="finalMessage"></div>
+      `;
+
+      const yes2 = document.getElementById('yes2');
+      const no2 = document.getElementById('no2');
+
+      yes2.addEventListener('click', () => {
+        showPopupModal();
+      });
+
+      function moveButtonRandomly() {
+        const containerRect = content.getBoundingClientRect();
+        const btnWidth = no2.offsetWidth;
+        const btnHeight = no2.offsetHeight;
+
+        const maxX = containerRect.width - btnWidth;
+        const maxY = containerRect.height - btnHeight;
+
+        const x = Math.floor(Math.random() * maxX);
+        const y = Math.floor(Math.random() * maxY);
+
+        no2.style.left = `${x}px`;
+        no2.style.top = `${y}px`;
+      }
+
+      no2.addEventListener('mouseover', moveButtonRandomly);
+      no2.addEventListener('click', moveButtonRandomly);
+    }
+
+    function showPopupModal() {
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.innerHTML = `
+      <div class="modal-content">
+        <img src="image/fotodimas.png" alt="Foto Romantis" />
+        <div class="result-grid">
+          <p>ALHAMDULILLAH</p>
+          <p>SS KIRIM WA YAK</p>
+        </div>
+        <button class="btn" id="btn-gamau">aku kepaksa nih</button>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.remove();
+    });
+
+    const btnGamau = modal.querySelector('#btn-gamau');
+    btnGamau.addEventListener('click', () => {
+      modal.remove(); // tutup modal sebelumnya
+      showSecondPopup(); // tampilkan popup lanjutan
+    });
+  }
+
+  function showSecondPopup() {
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.innerHTML = `
+      <div class="modal-content">
+        <img src="image/fotodimas2.png" alt="Foto Lagi" />
+        <div class="result-grid">
+          <p>yahhh kepaksa yaak</p>
+          <p>yaudaa kalo kamu belom siap</p>
+          <p> tetep ss ini yaakk jawaban kamu untuk aku wkwkwk<p>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    // Click outside to close
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.remove();
+    });
+  }
+
+  </script>
+</body>
+</html>
