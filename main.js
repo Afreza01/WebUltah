@@ -15,7 +15,7 @@ function type() {
   if (index < text.length) {
     typingText.textContent += text[index];
     index++;
-    setTimeout(type, 500); // delay per huruf 150ms
+    setTimeout(type, 300); // delay per huruf 150ms
   } else {
     // setelah selesai ketik, munculkan tombol
     button.style.opacity = 1;
@@ -23,3 +23,4 @@ function type() {
 }
 
 type();
+

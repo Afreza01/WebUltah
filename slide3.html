@@ -1,0 +1,163 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Happy Birthday</title>
+    <style>
+        body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-image: url('image/backg.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        }
+
+        .container {
+        text-align: center;
+        padding: 20px;
+        max-width: 90%;
+        margin: auto;
+        }
+
+        .slider-container {
+        overflow: hidden;
+        width: 300px;
+        height: 200px;
+        margin: 0 auto;
+        position: relative;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .slider {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        }
+
+        .slider img {
+        width: 300px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 12px;
+        flex-shrink: 0;
+        }
+
+        .message {
+        margin-top: 20px;
+        background-color: rgb(255, 202, 202);
+        padding: 15px;
+        border-radius: 12px;
+        max-width: 600px;
+        margin-inline: auto;
+        font-size: 18px;
+        line-height: 1.6;
+        color: #000000;
+        }
+        .button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+    </style>
+    </head>
+    <!-- Backsound Music -->
+<audio id="bg-music" autoplay loop>
+<source src="audio/backsound3.mp4" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+    <body>
+  
+
+    <!-- Slider -->
+    <div class="container">
+        <div id="start-screen" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#000000cc; color:white; display:flex; justify-content:center; align-items:center; z-index:9999; flex-direction:column;">
+            <h2>Dibaca yaaak!</h2>
+            <button onclick="startMusic()" style="padding:10px 20px; font-size:18px;">Klik</button>
+          </div>
+          
+        <div class="slider-container">
+        <div class="slider" id="slider">
+            <img src="image/fotbar1.jpeg" alt="Photo 1" />
+            <img src="image/fotbar2.jpeg" alt="Photo 2" />
+            <img src="image/fotbar3.jpeg" alt="Photo 3" />
+            <img src="image/fotbar4.jpeg" alt="Photo 4" />
+            <img src="image/fotbar5.jpeg" alt="Photo 5" />
+            <img src="image/fotbar6.jpeg" alt="Photo 6" />
+            <img src="image/fotbar7.jpeg" alt="Photo 7" />
+            <img src="image/fotbar8.jpeg" alt="Photo 8" />
+            <img src="image/fotbar9.jpeg" alt="Photo 9" />
+            <img src="image/fotbar10.jpeg" alt="Photo 10" />
+            <img src="image/fotbar11.jpeg" alt="Photo 11" />
+        </div>
+        </div>
+
+        <!-- Message -->
+        <div class="message" id="message">
+        </div>
+        <a href="slide3.html" class="button" id="next-button">Klik lagi dah</a>
+
+    </div>
+
+    <script>
+  // Slider logic
+  const slider = document.getElementById('slider');
+  const images = slider.querySelectorAll('img');
+  let currentIndex = 0;
+
+  function slideImages() {
+    currentIndex = (currentIndex + 1) % images.length;
+    slider.style.transform = `translateX(-${currentIndex * 300}px)`;
+  }
+
+  setInterval(slideImages, 3000);
+
+  // Backsound logic
+  function startMusic() {
+    const music = document.getElementById("bg-music");
+    music.play();
+    document.getElementById("start-screen").style.display = "none";
+    startTyping(); // Mulai animasi ketik setelah klik tombol "Mulai"
+  }
+
+  // Typing effect
+  const messageElement = document.getElementById("message");
+  const fullText = `Haii..\n\nSelamat ulang tahun ya. Terima kasih udh hadir di dunia ini dan berbagi kebahagiaan. Semoga semua harapan yang kamu inginkan bisa jadi kenyataan.\n\nSelamat menjadi manusia dewasa ya, dimana kamu akan ketemu sama lebih banyak rintangan. Jangan lupa ucapin terima kasih pada diri kamu sendiri yang sangat kuat sampe saat ini.\n\nSehat sehat terus ya moza (syg wkwk) jangan lupa bersyukur. Cape boleh, Nyerah jangan!\n\nluv u.`;
+
+  let charIndex = 0;
+
+  function startTyping() {
+  if (charIndex < fullText.length) {
+    messageElement.innerHTML += fullText.charAt(charIndex) === "\n" ? "<br>" : fullText.charAt(charIndex);
+    charIndex++;
+    setTimeout(startTyping, 110); // kecepatan ketik
+  } else {
+    // Munculkan tombol setelah selesai ngetik
+    document.getElementById("next-button").style.opacity = "1";
+  }
+}
+  // Jaga-jaga: klik layar bisa memulai musik (untuk Safari/iOS)
+  window.addEventListener('click', function () {
+    const music = document.getElementById('bg-music');
+    if (music.paused) {
+      music.play();
+    }
+  });
+
+
+    </script>
+
+    </body>
+    </html>
