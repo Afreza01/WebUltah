@@ -83,14 +83,14 @@ Your browser does not support the audio element.
 
     <!-- Slider -->
     <div class="container">
-        <div id="start-screen" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#000000cc; color:white; display:flex; justify-content:center; align-items:center; z-index:9999; flex-direction:column;">
+        <!-- <div id="start-screen" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#000000cc; color:white; display:flex; justify-content:center; align-items:center; z-index:9999; flex-direction:column;">
             <h2>Dibaca yaaak!</h2>
             <button onclick="startMusic()" style="padding:10px 20px; font-size:18px;">Klik</button>
-          </div>
+          </div> -->
           
         <div class="slider-container">
         <div class="slider" id="slider">
-            <img src="image/fotbar1.jpeg" alt="Photo 1" />
+            <img src="image/fotbar1.jpeg" alt="" />
             <img src="image/fotbar2.jpeg" alt="Photo 2" />
             <img src="image/fotbar3.jpeg" alt="Photo 3" />
             <img src="image/fotbar4.jpeg" alt="Photo 4" />
@@ -122,19 +122,23 @@ Your browser does not support the audio element.
     slider.style.transform = `translateX(-${currentIndex * 300}px)`;
   }
 
-  setInterval(slideImages, 3000);
+  setInterval(slideImages, 4000);
 
   // Backsound logic
-  function startMusic() {
-    const music = document.getElementById("bg-music");
-    music.play();
-    document.getElementById("start-screen").style.display = "none";
-    startTyping(); // Mulai animasi ketik setelah klik tombol "Mulai"
-  }
+//   function startMusic() {
+//     const music = document.getElementById("bg-music");
+//     music.play();
+//     document.getElementById("start-screen").style.display = "none";
+//     startTyping(); // Mulai animasi ketik setelah klik tombol "Mulai"
+//   }
+
+window.addEventListener('DOMContentLoaded', () => {
+  startTyping();
+});
 
   // Typing effect
   const messageElement = document.getElementById("message");
-  const fullText = `Haii..\n\nSelamat ulang tahun ya. Terima kasih udh hadir di dunia ini dan berbagi kebahagiaan. Semoga semua harapan yang kamu inginkan bisa jadi kenyataan.\n\nSelamat menjadi manusia dewasa ya, dimana kamu akan ketemu sama lebih banyak rintangan. Jangan lupa ucapin terima kasih pada diri kamu sendiri yang sangat kuat sampe saat ini.\n\nSehat sehat terus ya moza (syg wkwk) jangan lupa bersyukur. Cape boleh, Nyerah jangan!\n\nluv u.`;
+  const fullText = `Haii....\n\nSelamat ulang tahun ya. Terima kasih udh hadir di dunia ini dan berbagi kebahagiaan. Semoga semua harapan yang kamu inginkan bisa jadi kenyataan.\n\nSelamat menjadi manusia dewasa ya, dimana kamu akan ketemu sama lebih banyak rintangan. Jangan lupa ucapin terima kasih pada diri kamu sendiri yang sangat kuat sampe saat ini.\n\nSehat sehat terus ya moza (syg wkwk) jangan lupa bersyukur. Cape boleh, Nyerah jangan!\n\nluv u.`;
 
   let charIndex = 0;
 
@@ -142,7 +146,7 @@ Your browser does not support the audio element.
   if (charIndex < fullText.length) {
     messageElement.innerHTML += fullText.charAt(charIndex) === "\n" ? "<br>" : fullText.charAt(charIndex);
     charIndex++;
-    setTimeout(startTyping, 110); // kecepatan ketik
+    setTimeout(startTyping, 115); // kecepatan ketik
   } else {
     // Munculkan tombol setelah selesai ngetik
     document.getElementById("next-button").style.opacity = "1";
