@@ -138,6 +138,30 @@
       color: #c2185b;
       font-size: 15px;
     }
+    /* Balloon animation */
+.balloon {
+  position: fixed;
+  bottom: -100px;
+  width: 40px;
+  height: 60px;
+  background: pink;
+  border-radius: 50% 50% 50% 50%;
+  animation: floatUp 5s ease-in-out forwards;
+  z-index: 999;
+  opacity: 0.8;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-120vh) scale(1.2);
+    opacity: 0;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -256,6 +280,34 @@
         if (e.target === modal) modal.remove();
       });
     }
+
+    function createBalloon() {
+  const balloon = document.createElement('div');
+  balloon.className = 'balloon';
+  
+  // Random horizontal position
+  const left = Math.random() * 100;
+  balloon.style.left = `${left}vw`;
+  
+  // Optional random color
+  const colors = ['#ff69b4', '#ffb6c1', '#ffd1dc', '#ffc0cb'];
+  balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+  document.body.appendChild(balloon);
+
+  // Remove the balloon after animation ends
+  setTimeout(() => {
+    balloon.remove();
+  }, 5000);
+}
+
+// Create multiple balloons on page load
+window.addEventListener('load', () => {
+  for (let i = 0; i < 20; i++) {
+    setTimeout(createBalloon, i * 300); // Delay each balloon
+  }
+});
+
   </script>
 </body>
 </html>
