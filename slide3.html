@@ -5,15 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Happy Birthday</title>
 
-  <!-- Import font Great Vibes & Poppins dari Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Import font Montserrat dari Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* Background dengan gambar fixed dan particles di belakang */
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Poppins', Arial, sans-serif;
+      font-family: 'Montserrat', sans-serif;
       background-image: url('image/backg.jpeg');
       background-size: cover;
       background-position: center;
@@ -27,14 +26,13 @@
       overflow-x: hidden;
     }
 
-    /* Container utama di atas background */
     .container {
       text-align: center;
       padding: 20px;
       max-width: 90%;
       margin: auto;
       position: relative;
-      z-index: 10; /* di atas particles */
+      z-index: 10;
     }
 
     .slider-container {
@@ -67,20 +65,20 @@
       border-radius: 12px;
       max-width: 600px;
       margin-inline: auto;
-      font-family: 'Great Vibes', cursive;
-      font-size: 28px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
       line-height: 1.6;
       color: #330000;
       text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
       position: relative;
       z-index: 10;
-      white-space: pre-wrap; /* agar \n terbaca */
+      white-space: pre-wrap;
     }
 
     .button {
       margin-top: 20px;
       padding: 12px 28px;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-weight: 600;
       background-color: #ff5260;
       color: white;
@@ -99,30 +97,26 @@
       background-color: #e04452;
     }
 
-    /* Elemen untuk particles */
     #particles-js {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 1; /* di belakang container */
+      z-index: 1;
       pointer-events: none;
     }
   </style>
 </head>
 
 <body>
-  <!-- Particle Background -->
   <div id="particles-js"></div>
 
-  <!-- Backsound Music -->
   <audio id="bg-music" autoplay loop>
     <source src="audio/backsound3.mp4" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
-  <!-- Slider -->
   <div class="container">
     <div class="slider-container">
       <div class="slider" id="slider">
@@ -140,26 +134,16 @@
       </div>
     </div>
 
-    <!-- Message -->
     <div class="message" id="message"></div>
     <a href="slide4.html" class="button" id="next-button">Klik lagi dah</a>
   </div>
 
-  <!-- Particles.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
     particlesJS('particles-js', {
       "particles": {
-        "number": {
-          "value": 80,
-          "density": {
-            "enable": true,
-            "value_area": 800
-          }
-        },
-        "color": {
-          "value": "#ff5260"
-        },
+        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": "#ff5260" },
         "shape": {
           "type": "image",
           "image": {
@@ -168,52 +152,22 @@
             "height": 24
           }
         },
-        "opacity": {
-          "value": 0.8,
-          "random": true,
-          "anim": {
-            "enable": true,
-            "speed": 1,
-            "opacity_min": 0.1,
-            "sync": false
-          }
-        },
-        "size": {
-          "value": 3,
-          "random": true,
-          "anim": {
-            "enable": false
-          }
-        },
-        "line_linked": {
-          "enable": false
-        },
-        "move": {
-          "enable": true,
-          "speed": 1,
-          "direction": "none",
-          "random": true,
-          "straight": false,
-          "out_mode": "out",
-          "bounce": false
-        }
+        "opacity": { "value": 0.8, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
+        "size": { "value": 3, "random": true },
+        "line_linked": { "enable": false },
+        "move": { "enable": true, "speed": 1, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
       },
       "interactivity": {
         "detect_on": "canvas",
         "events": {
-          "onhover": {
-            "enable": false
-          },
-          "onclick": {
-            "enable": false
-          },
+          "onhover": { "enable": false },
+          "onclick": { "enable": false },
           "resize": true
         }
       },
       "retina_detect": true
     });
 
-    // Slider logic
     const slider = document.getElementById('slider');
     const images = slider.querySelectorAll('img');
     let currentIndex = 0;
@@ -225,7 +179,6 @@
 
     setInterval(slideImages, 4000);
 
-    // Typing effect
     window.addEventListener('DOMContentLoaded', () => {
       startTyping();
     });
@@ -245,7 +198,6 @@
       }
     }
 
-    // Play music on click for Safari/iOS compatibility
     window.addEventListener('click', function () {
       const music = document.getElementById('bg-music');
       if (music.paused) {
