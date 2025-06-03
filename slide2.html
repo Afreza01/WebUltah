@@ -18,6 +18,18 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow-x: hidden;
+    }
+
+    /* Background particles */
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* di belakang semua */
+      pointer-events: none;
     }
 
     .container {
@@ -27,16 +39,14 @@
       width: 100%;
       max-width: 250px;
       margin: 0 auto;
+      z-index: 10;
     }
-
 
     .person-img-top {
       position: fixed;
       top: 120px;
-      /* sesuaikan posisi vertikal */
       left: 0;
       max-width: 40vw;
-      /* gambar maksimal 40% viewport width */
       height: auto;
       z-index: 10;
     }
@@ -44,10 +54,8 @@
     .person-img-top1 {
       position: fixed;
       bottom: 120px;
-      /* sesuaikan posisi vertikal */
       left: 0;
       max-width: 40vw;
-      /* gambar maksimal 40% viewport width */
       height: auto;
       z-index: 10;
     }
@@ -72,17 +80,23 @@
       z-index: 10;
     }
 
-.button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  display: inline-block;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
+    .button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      font-size: 16px;
+      font-style: italic;
+      color: black;
+    }
 
+    .button:hover {
+      background-color: #f8aeb4;
+    }
 
     .message-box {
       position: relative;
@@ -98,155 +112,145 @@
       font-style: italic;
     }
 
-    
-    .button {
-      font-size: 16px;
-      font-style: italic;
-      bottom: -50%;
-      margin: 0;
-      text-decoration: none;
-      color: black;
+    /* Preloader */
+    .container2 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 20;
     }
 
-    .button:hover {
-      background-color: #f8aeb4;
+    .container2 .preloader {
+      animation: rotate 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
     }
 
-    /* From Uiverse.io by S4tyendra */ 
-.container2 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+    @keyframes rotate {
+      50% {
+        transform: rotate(360deg);
+      }
 
-.container2 .preloader {
-  animation: rotate 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
-}
+      100% {
+        transform: rotate(720deg);
+      }
+    }
 
-@keyframes rotate {
-  50% {
-    transform: rotate(360deg);
-  }
+    .preloader span {
+      --c: #f23f3f;
+      position: absolute;
+      display: block;
+      height: 64px;
+      width: 64px;
+      background: var(--c);
+      border: 1px solid var(--c);
+      border-radius: 100%;
+    }
 
-  100% {
-    transform: rotate(720deg);
-  }
-}
+    .preloader span:nth-child(1) {
+      transform: translate(-28px, -28px);
+      animation: shape_1 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
+    }
 
-.preloader span {
-  --c: #f23f3f;
-  position: absolute;
-  display: block;
-  height: 64px;
-  width: 64px;
-  background: var(--c);
-  border: 1px solid var(--c);
-  border-radius: 100%;
-}
+    @keyframes shape_1 {
+      60% {
+        transform: scale(0.4);
+      }
+    }
 
-.preloader span:nth-child(1) {
-  transform: translate(-28px, -28px);
-  animation: shape_1 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
-}
+    .preloader span:nth-child(2) {
+      transform: translate(28px, -28px);
+      animation: shape_2 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
+    }
 
-@keyframes shape_1 {
-  60% {
-    transform: scale(0.4);
-  }
-}
+    @keyframes shape_2 {
+      40% {
+        transform: scale(0.4);
+      }
+    }
 
-.preloader span:nth-child(2) {
-  transform: translate(28px, -28px);
-  animation: shape_2 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
-}
+    .preloader span:nth-child(3) {
+      position: relative;
+      border-radius: 0px;
+      transform: scale(0.98) rotate(-45deg);
+      animation: shape_3 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
+    }
 
-@keyframes shape_2 {
-  40% {
-    transform: scale(0.4);
-  }
-}
+    @keyframes shape_3 {
+      50% {
+        border-radius: 100%;
+        transform: scale(0.5) rotate(-45deg);
+      }
 
-.preloader span:nth-child(3) {
-  position: relative;
-  border-radius: 0px;
-  transform: scale(0.98) rotate(-45deg);
-  animation: shape_3 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
-}
+      100% {
+        transform: scale(0.98) rotate(-45deg);
+      }
+    }
 
-@keyframes shape_3 {
-  50% {
-    border-radius: 100%;
-    transform: scale(0.5) rotate(-45deg);
-  }
+    .shadow {
+      position: relative;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: block;
+      height: 16px;
+      width: 64px;
+      border-radius: 50%;
+      background-color: #d9d9d9;
+      border: 1px solid #d9d9d9;
+      animation: shadow 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
+    }
 
-  100% {
-    transform: scale(0.98) rotate(-45deg);
-  }
-}
+    @keyframes shadow {
+      50% {
+        transform: translateX(-50%) scale(0.5);
+        border-color: #f2f2f2;
+      }
+    }
 
-.shadow {
-  position: relative;
-  top: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: block;
-  height: 16px;
-  width: 64px;
-  border-radius: 50%;
-  background-color: #d9d9d9;
-  border: 1px solid #d9d9d9;
-  animation: shadow 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
-}
+    /* Animasi masuk dari kiri ke kanan */
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
 
-@keyframes shadow {
-  50% {
-    transform: translateX(-50%) scale(0.5);
-    border-color: #f2f2f2;
-  }
-}
-/* Animasi masuk dari kiri ke kanan */
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(-100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
 
-/* Animasi masuk dari kanan ke kiri */
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
+    /* Animasi masuk dari kanan ke kiri */
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
 
-.slide-in-right {
-  opacity: 0;
-  animation: slideInRight 1s ease-in forwards;
-  animation-delay: 0.3s;
-}
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
 
+    .slide-in-right {
+      opacity: 0;
+      animation: slideInRight 1s ease-in forwards;
+      animation-delay: 0.3s;
+    }
 
-.slide-in-left {
-  opacity: 0;
-  animation: slideInLeft 1s ease-in forwards;
-  animation-delay: 0.3s;
-}
-
-
+    .slide-in-left {
+      opacity: 0;
+      animation: slideInLeft 1s ease-in forwards;
+      animation-delay: 0.3s;
+    }
   </style>
 </head>
 
 <body>
+  <!-- Particle Background -->
+  <div id="particles-js"></div>
+
   <!-- PRELOADER -->
   <div id="preloader" class="container2">
     <div class="preloader">
@@ -259,20 +263,103 @@
 
   <!-- MAIN CONTENT -->
   <div class="container" id="main-content" style="display: none;">
-    <img src="image/foto3.png" alt="Top Person" class="person-img-top slide-in-right"  />
+    <img src="image/foto3.png" alt="Top Person" class="person-img-top slide-in-right" />
     <img src="image/foto3.png" alt="Top Person" class="person-img-top1 slide-in-right" />
     <div class="message-box">
       <h1 id="typing-text"></h1>
       <a href="slide3.html" class="button" style="opacity: 0;">Klik lagi dah</a>
     </div>
-    
 
     <img src="image/foto3 (copy 1).png" alt="Bottom Person" class="person-img-bottom slide-in-left" />
     <img src="image/foto3 (copy 1).png" alt="Bottom Person" class="person-img-bottom2 slide-in-left" />
   </div>
 
+  <!-- Particles.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS('particles-js', {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#ff5260"
+        },
+        "shape": {
+          "type": "star",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          }
+        },
+        "opacity": {
+          "value": 0.8,
+          "random": true,
+          "anim": {
+            "enable": true,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": {
+            "enable": false
+          }
+        },
+        "line_linked": {
+          "enable": false
+        },
+        "move": {
+          "enable": true,
+          "speed": 1,
+          "direction": "none",
+          "random": true,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": false
+          },
+          "onclick": {
+            "enable": false
+          },
+          "resize": true
+        }
+      },
+      "retina_detect": true
+    });
+
+    // Contoh show main-content setelah preloader (bisa sesuaikan dengan script kamu)
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      const mainContent = document.getElementById('main-content');
+      setTimeout(() => {
+        preloader.style.display = 'none';
+        mainContent.style.display = 'block';
+
+        // Tampilkan tombol dengan efek fade in
+        const btn = document.querySelector('.button');
+        btn.style.opacity = 1;
+      }, 3000); // Delay 3 detik contoh
+    });
+  </script>
+
   <script src="main.js"></script>
 </body>
-
 
 </html>

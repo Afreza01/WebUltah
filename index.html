@@ -22,6 +22,16 @@
             flex-direction: column;
         }
 
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
         .container {
             position: relative;
             text-align: center;
@@ -37,8 +47,8 @@
             left: 9%;
             transform: translateX(-50%);
             width: 250px;
-            z-index: -1;
-            /* pastikan ini di belakang message-box */
+            z-index: 1;
+            /* pastikan ini di depan message-box */
             border-radius: 10px;
         }
 
@@ -49,6 +59,8 @@
             border-radius: 5px;
             max-width: 300px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         .message-box h2 {
@@ -69,145 +81,236 @@
             font-style: italic;
             text-decoration: none;
             color: black;
+            position: relative;
+            z-index: 2;
+            display: inline-block;
         }
-        .click-text:hover{
+
+        .click-text:hover {
             background-color: #f8aeb4;
         }
 
-           /* From Uiverse.io by S4tyendra */ 
-.container2 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+        /* From Uiverse.io by S4tyendra */
+        .container2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
 
-.container2 .preloader {
-  animation: rotate 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
-}
+        .container2 .preloader {
+            animation: rotate 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
+        }
 
-@keyframes rotate {
-  50% {
-    transform: rotate(360deg);
-  }
+        @keyframes rotate {
+            50% {
+                transform: rotate(360deg);
+            }
 
-  100% {
-    transform: rotate(720deg);
-  }
-}
+            100% {
+                transform: rotate(720deg);
+            }
+        }
 
-.preloader span {
-  --c: #f23f3f;
-  position: absolute;
-  display: block;
-  height: 64px;
-  width: 64px;
-  background: var(--c);
-  border: 1px solid var(--c);
-  border-radius: 100%;
-}
+        .preloader span {
+            --c: #f23f3f;
+            position: absolute;
+            display: block;
+            height: 64px;
+            width: 64px;
+            background: var(--c);
+            border: 1px solid var(--c);
+            border-radius: 100%;
+        }
 
-.preloader span:nth-child(1) {
-  transform: translate(-28px, -28px);
-  animation: shape_1 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
-}
+        .preloader span:nth-child(1) {
+            transform: translate(-28px, -28px);
+            animation: shape_1 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
+        }
 
-@keyframes shape_1 {
-  60% {
-    transform: scale(0.4);
-  }
-}
+        @keyframes shape_1 {
+            60% {
+                transform: scale(0.4);
+            }
+        }
 
-.preloader span:nth-child(2) {
-  transform: translate(28px, -28px);
-  animation: shape_2 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
-}
+        .preloader span:nth-child(2) {
+            transform: translate(28px, -28px);
+            animation: shape_2 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
+        }
 
-@keyframes shape_2 {
-  40% {
-    transform: scale(0.4);
-  }
-}
+        @keyframes shape_2 {
+            40% {
+                transform: scale(0.4);
+            }
+        }
 
-.preloader span:nth-child(3) {
-  position: relative;
-  border-radius: 0px;
-  transform: scale(0.98) rotate(-45deg);
-  animation: shape_3 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
-}
+        .preloader span:nth-child(3) {
+            position: relative;
+            border-radius: 0px;
+            transform: scale(0.98) rotate(-45deg);
+            animation: shape_3 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
+        }
 
-@keyframes shape_3 {
-  50% {
-    border-radius: 100%;
-    transform: scale(0.5) rotate(-45deg);
-  }
+        @keyframes shape_3 {
+            50% {
+                border-radius: 100%;
+                transform: scale(0.5) rotate(-45deg);
+            }
 
-  100% {
-    transform: scale(0.98) rotate(-45deg);
-  }
-}
+            100% {
+                transform: scale(0.98) rotate(-45deg);
+            }
+        }
 
-.shadow {
-  position: relative;
-  top: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: block;
-  height: 16px;
-  width: 64px;
-  border-radius: 50%;
-  background-color: #d9d9d9;
-  border: 1px solid #d9d9d9;
-  animation: shadow 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
-}
+        .shadow {
+            position: relative;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: block;
+            height: 16px;
+            width: 64px;
+            border-radius: 50%;
+            background-color: #d9d9d9;
+            border: 1px solid #d9d9d9;
+            animation: shadow 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
+        }
 
-@keyframes shadow {
-  50% {
-    transform: translateX(-50%) scale(0.5);
-    border-color: #f2f2f2;
-  }
-}
+        @keyframes shadow {
+            50% {
+                transform: translateX(-50%) scale(0.5);
+                border-color: #f2f2f2;
+            }
+        }
 
-@keyframes slideInTop {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
+        @keyframes slideInTop {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
 
-.slide-in-top{
-    opacity: 0;
-    animation: slideInTop 1s ease-in-out forwards;
-    animation-delay: 0.3s;
-}
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-in-top {
+            opacity: 0;
+            animation: slideInTop 1s ease-in-out forwards;
+            animation-delay: 0.3s;
+        }
     </style>
 </head>
 
 <body>
-        <!-- PRELOADER -->
-  <div id="preloader" class="container2">
-    <div class="preloader">
-      <span></span>
-      <span></span>
-      <span></span>
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+
+    <!-- PRELOADER -->
+    <div id="preloader" class="container2">
+        <div class="preloader">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="shadow"></div>
     </div>
-    <div class="shadow"></div>
-  </div>
-  <div id="main-content" style="display:none;">
-    <div class="container">
-      <img src="image/foto6.png" alt="Moza" class="person-img slide-in-top" />
-      <div class="message-box">
-        <h2><strong>Hi Mozajaaa!</strong></h2>
-        <p>THIS IS SPECIAL FOR U TODAY</p>
-      </div>
-      <a href="slide2.html" class="click-text">Klik Dahh</a>
+
+    <!-- MAIN CONTENT -->
+    <div id="main-content" style="display:none;">
+        <div class="container">
+            <img src="image/foto6.png" alt="Moza" class="person-img slide-in-top" />
+            <div class="message-box">
+                <h2><strong>Hi Mozaaaaa!</strong></h2>
+                <p>THIS IS SPECIAL FOR U TODAY</p>
+            </div>
+            <a href="slide2.html" class="click-text">Klik Dahh</a>
+        </div>
     </div>
-  </div>
-  
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <script>
+        // Particles star background config
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ff5260"
+                },
+                "shape": {
+                    "type": "star",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.8,
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false
+                    }
+                },
+                "line_linked": {
+                    "enable": false
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 1,
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": false
+                    },
+                    "onclick": {
+                        "enable": false
+                    },
+                    "resize": true
+                }
+            },
+            "retina_detect": true
+        });
+
+        // Preloader logic (optional: tampilkan main content setelah load)
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                document.getElementById('preloader').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            }, 3000);
+        });
+    </script>
+
     <script src="main.js"></script>
 </body>
 
